@@ -2,16 +2,6 @@
 capstone project for IBM's Professional Data Scientist certificate
 
 ## Introduction/Business Problem
-Have you ever bought some plane tickets to spend the weekend away but have little to no idea what are the main attractions of the city you will be visiting?
-Have you ever been on a work trip abroad and wanted to take advantage of the situation to tour the city in the few days you have available before having to go home?
-Your plane leaves tomorrow and you have no time to plan your trip?
-If yes this solution could help you get organized with helpful tips and machine learning - powered insights.
-
-In this repository you can find the backend of a chatbot that is aimed at helping those who struggle with the frantic rhythms of today's life whenever they have to plan for a vacation, or those who are part of the larger group of people who, when they visit a place for the first time, tend to visit only the best known sights and miss out on most of the other interesting venues. 
-# carpetrip
-capstone project for IBM's Professional Data Scientist certificate
-
-## Introduction/Business Problem
 Have you ever bought some plane tickets to spend the weekend away but have little to no idea what are the main attractions of the city you will be visiting?  
 Have you ever been on a work trip abroad and wanted to take advantage of the situation to tour the city in the few days you have available before going home?  
 Your plane leaves tomorrow and you have no time to plan your trip?  
