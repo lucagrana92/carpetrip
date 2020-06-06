@@ -38,10 +38,10 @@ In order to fullfil its purpose,  *carpetrip*  will be using data from the sourc
 	![scraping](https://drive.google.com/uc?export=download&id=12JMbSOtVTIoHTjL3pNIzBSSGfF7yvoYR)
 - [TaxiFareFinder](https://https://www.taxifarefinder.com/) website: making an estimate of the cost of transports during a vacation can be hard without access to the proper API for the city of interest; to circumvent complications, *carpetrip* scrapes taxi fares from this useful online calculator 
 
-	![enter image description here](https://drive.google.com/uc?export=download&id=1Bfk8sQOPtptgt5RDANqfOxAftp68OIT3)
+	![taxiff](https://drive.google.com/uc?export=download&id=1Bfk8sQOPtptgt5RDANqfOxAftp68OIT3)
 - [Nominatim](https://nominatim.openstreetmap.org/): Nominatim is a search engine for [OpenStreetMap](https://www.openstreetmap.org/) data available for use in Python within the geopy.geocoders library; in the context of this solution, Nominatim is used to perform geocoding of  popular places' address
 
-	![enter image description here](https://drive.google.com/uc?export=download&id=1Rp0cpbLA-2XMmWaJ52in7jvZahaP4EQ4)
+	![nom](https://drive.google.com/uc?export=download&id=1Rp0cpbLA-2XMmWaJ52in7jvZahaP4EQ4)
 ## Methodology
 
 #### step 1
@@ -75,7 +75,7 @@ As a result of this process we have defined the final list of sights that will b
 #### step 4
 Next step is to help the user find a hotel that minimizes the overall spending (taxi + accomodation). In order to achieve this goal, *carpetrip* finds the *center of gravity* (mathematically, the spot that minimizes the sum of distances to an ensemble of points) of the selected venues and query the Foursquare service at [this](#second-foursquare-url) url to find all the facilities within a radius of 1000 meters (blue area in the example).
 
-![clusters view](https://drive.google.com/uc?export=download&id=1pBDsdMF-Q0zUgSzwxAPA3l5MIT7v7CaL)
+![cog](https://drive.google.com/uc?export=download&id=1pBDsdMF-Q0zUgSzwxAPA3l5MIT7v7CaL)
 
 In order to make comparisons, the price of a room in each hotel needs to be retrieved from Trip Advisor; however,  it's worth to point out that just for the city of New York the website contains over 900 listings spread over about 30 pages and that each time a page is loaded the website needs time to execute the underlying script to load information about room prices. 
 The issue of automating the process of parsing through different pages of listing is easily solved if we consider the url's structure:
