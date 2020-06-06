@@ -148,7 +148,7 @@ As a final step, the total cost of a hotel is computed by summing up the fares f
 
 Let's suppose our user declared a budget of maximum 200 € per night for a room: at this point the bot will consider the total cost of the farthest hotel from the optimal area with room price ≤ 200 € as a baseline and recommend to the user all those hotels that have a lower total cost than that one (even those whose cost per night is actually ≥ 200 €).
 
-![best choice](https://drive.google.com/uc?export=download&id=1QMGule-jkq599MRdDSs59Tk3FcHFyOu6)
+![best_choice](https://drive.google.com/uc?export=download&id=1QMGule-jkq599MRdDSs59Tk3FcHFyOu6)
 
 ## Results
 As it's possible to see from this documentation, the *carpetrip* bot aims at making the life of a tourist easier under multiple points of view: from learning about the points of interest within a city, to vacation planning and cost minimization. 
@@ -167,7 +167,7 @@ By running the algorithm described above with this choice of accomodation we obt
 
 Let's compare the total cost with that of hotels in the optimal area defined in the use case in the notebook:
 
-![best choice](https://drive.google.com/uc?export=download&id=1QMGule-jkq599MRdDSs59Tk3FcHFyOu6)
+![best_choice_again](https://drive.google.com/uc?export=download&id=1QMGule-jkq599MRdDSs59Tk3FcHFyOu6)
 
 We notice immediately, that although being out of the price range, the Park Hyatt hotel has a lower total cost and a higher rating on Trip Advisor than the Solita Soho Hotel, thus proving the thesis that **choosing a facility from the optimal area helps minimizing distance travelled between POIs, which in turn minimizes cost and allows the user to access higher value rooms for less money**.
 
