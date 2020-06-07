@@ -35,26 +35,26 @@ In order to fullfil its purpose,  *carpetrip*  will be using data from the sourc
 
 		
 
-	![scraping](https://drive.google.com/uc?export=download&id=12JMbSOtVTIoHTjL3pNIzBSSGfF7yvoYR)
+	![scraping](images/scraping_hotel_prices.jpg)
 - [TaxiFareFinder](https://https://www.taxifarefinder.com/) website: making an estimate of the cost of transports during a vacation can be hard without access to the proper API for the city of interest; to circumvent complications, *carpetrip* scrapes taxi fares from this useful online calculator 
 
-	![taxiff](https://drive.google.com/uc?export=download&id=1Bfk8sQOPtptgt5RDANqfOxAftp68OIT3)
+	![taxiff](images/scraping_taxi_fares.jpg)
 - [Nominatim](https://nominatim.openstreetmap.org/): Nominatim is a search engine for [OpenStreetMap](https://www.openstreetmap.org/) data available for use in Python within the geopy.geocoders library; in the context of this solution, Nominatim is used to perform geocoding of  popular places' address
 
-	![nom](https://drive.google.com/uc?export=download&id=1Rp0cpbLA-2XMmWaJ52in7jvZahaP4EQ4)
+	![nom](images/nominatim.jpg)
 ## Methodology
 
 #### step 1
 The first step to take in analyzing the sights of a city is defining its perimeter. In this case, the Nominatim class in the geopy.geocoders module comes in handy because, when the name of a geographical area such as *Manhattan, New York, NY* is passed as an argument to it, it returns a json with raw information pertinent to that location: as it's possible to see from the example, the JSON also contains the bounding box of the considered area, from which it is possible to define the scope of the search as the blue area in the second image below.
 
-![nominatim](https://drive.google.com/uc?export=download&id=1d0cKb_IAANuAr4-dJO1ALKuj9QnmTu-P)
+![nominatim](images/nominatim2.jpg)
 
-![nybox](https://drive.google.com/uc?export=download&id=1hFXVSiM-UdJcRdF3O8zh_6yigETx8kaT)
+![nybox](images/ny.jpg)
 
 #### step 2
 As a second step, the chatbot proposes a list of places to visit based on the categories of attractions that the user finds interesting. This is done by parsing Foursquare's response json to a GET request to [this url](#first-foursquare-url) into a tabular form like this: 
 
-![possible locations](https://drive.google.com/uc?export=download&id=1TSjXpwKByvdoh1xRqdAPoMJnk0oFwHNW)
+![possible locations](images/possible_locations.jpg)
 
 Once presented with the list, the user can make a first selection of the venues he is going to visit.
 
@@ -68,14 +68,14 @@ In these terms, the parameters of the DBSCAN are chosen considering that:
 
 The result is the following, where a different color highlights a different cluster (-1, in purple, represents the outliers) and venues that have already been selected by the user are represented with a larger mark:
 
-![clusters view](https://drive.google.com/uc?export=download&id=1chdKeMoDLILVgVh6B8k9E5IwHO0Cvc-j)
+![clusters view](images/clusters_view.jpg)
 
 As a result of this process we have defined the final list of sights that will be visited by the user.
 
 #### step 4
 Next step is to help the user find a hotel that minimizes the overall spending (taxi + accomodation). In order to achieve this goal, *carpetrip* finds the *center of gravity* (mathematically, the spot that minimizes the sum of distances to an ensemble of points) of the selected venues and query the Foursquare service at [this](#second-foursquare-url) url to find all the facilities within a radius of 1000 meters (blue area in the example).
 
-![cog](https://drive.google.com/uc?export=download&id=1pBDsdMF-Q0zUgSzwxAPA3l5MIT7v7CaL)
+![cog](images/optimal_hotel_area.jpg)
 
 In order to make comparisons, the price of a room in each hotel needs to be retrieved from Trip Advisor; however,  it's worth to point out that just for the city of New York the website contains over 900 listings spread over about 30 pages and that each time a page is loaded the website needs time to execute the underlying script to load information about room prices. 
 The issue of automating the process of parsing through different pages of listing is easily solved if we consider the url's structure:
@@ -95,7 +95,7 @@ or even more than one price. For this reason, it is necessary to use a regex in 
 
 This step is about planning the trips to the selected venues and organizing the vacation of our user. 
 
-![user venues](https://drive.google.com/uc?export=download&id=14x_08mZ4uR38rGcY-qV_j5OUZG6mR1it)
+![user venues](images/user_venues.jpg)
 
 A few assumptions are made:
 
@@ -119,7 +119,7 @@ The plan is then defined by a series of logical rules depending on two scenarios
 
 The final artifact looks something like this:
 
-![venues plan](https://drive.google.com/uc?export=download&id=1rqXdUPWX841pTmyiSy-Hig25LiaScAb3)
+![venues plan](images/venues_plan.jpg)
 
 #### step 6 
 Once the plan is defined, it's possible to calculate the cost of moving between places, assuming this is done 
@@ -144,11 +144,11 @@ Furthermore, a webdriver object from *selenium* is used to allow execution of ja
 
 As a final step, the total cost of a hotel is computed by summing up the fares for that facility with the price of the rooms times the number of nights (assumed to be equal to 2).
 
-![total cost](https://drive.google.com/uc?export=download&id=11-3SNbQCXjOMfsKPGPYal2UxbWq07hRj)
+![total cost](images/total_cost.png)
 
 Let's suppose our user declared a budget of maximum 200 € per night for a room: at this point the bot will consider the total cost of the farthest hotel from the optimal area with room price ≤ 200 € as a baseline and recommend to the user all those hotels that have a lower total cost than that one (even those whose cost per night is actually ≥ 200 €).
 
-![best_choice](https://drive.google.com/uc?export=download&id=1QMGule-jkq599MRdDSs59Tk3FcHFyOu6)
+![best_choice](images/total_cost.jpg)
 
 ## Results
 As it's possible to see from this documentation, the *carpetrip* bot aims at making the life of a tourist easier under multiple points of view: from learning about the points of interest within a city, to vacation planning and cost minimization. 
@@ -157,17 +157,17 @@ The latter aspect, cost, can however be measured in a more quantitative way.
 
 Let's suppose our user was looking to book a room at the *Solita Soho Hotel* after making his own consideration on price and quality (to be noted, it has a 4/5 rating).
 
-![Solita soho](https://drive.google.com/uc?export=download&id=1j44k7ubz0W6sNoXXMhP886y9AXC0g55G)
+![Solita soho](images/Comp.jpg)
 
 By running the algorithm described above with this choice of accomodation we obtain the following results:
 
-![soho_rides](https://drive.google.com/uc?export=download&id=1TFUL1mNEGaHctxed8LDH5Eohd8ZHwwTH)
+![soho_rides](images/solita_soho0.jpg)
 
-![soho_cost](https://drive.google.com/uc?export=download&id=1TZs-c2vLia_xhSzlxipcP60xg1AFxBGa)
+![soho_cost](images/solita_soho.jpg)
 
 Let's compare the total cost with that of hotels in the optimal area defined in the use case in the notebook:
 
-![best_choice_again](https://drive.google.com/uc?export=download&id=1QMGule-jkq599MRdDSs59Tk3FcHFyOu6)
+![best_choice_again](images/total_cost.jpg)
 
 We notice immediately, that although being out of the price range, the Park Hyatt hotel has a lower total cost and a higher rating on Trip Advisor than the Solita Soho Hotel, thus proving the thesis that **choosing a facility from the optimal area helps minimizing distance travelled between POIs, which in turn minimizes cost and allows the user to access higher value rooms for less money**.
 
